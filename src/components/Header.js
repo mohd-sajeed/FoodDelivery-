@@ -21,12 +21,12 @@ const Header = () => {
   console.log(cartItems)
 
   return (
-    <div className="flex  justify-between bg-pink-300 shadow-2xl m-4  ">
+    <div className="flex  justify-between bg-pink-100 shadow-2xl m-4 sm:bg-yellow-50 lg:bg-green-100 ">
       <Title />
       <div className="nav-items">
         <ul className="flex py-10">
+      <li className="px-2">Online Status:{isOnline ? "✅" : "🔴"}</li>
           <Link to="/">
-            {" "}
             <li className="px-2">Home</li>
           </Link>
           <Link to="/about">
@@ -44,7 +44,6 @@ const Header = () => {
         </ul>
       </div>
 
-      <h1>{isOnline ? "✅" : "🔴"}</h1>
       <span className="p-10 font-bold text-red-900">{user.name}</span>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Logout</button>

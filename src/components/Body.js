@@ -45,7 +45,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="p-2 bg-purple-400 m-2">
+      <div className="p-2 bg-purple-400 m-2 ">
         <input
           type="text"
           placeholder="search"
