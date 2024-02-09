@@ -1,0 +1,95 @@
+/*
+ *
+ * HMR-Hot Module Reload
+ * File Watchers Algorithm written in C++
+ * BUNDLING
+ * MINIFY
+ * Cleaning Our Code
+ * Dev and Production Build
+ * Super Fast Build Algorithm
+ * Image Optimization
+ * Catching while Development
+ * Compression
+ * Compatible with older version of browser
+ * HTTPS on Dev
+ * Port Number
+ * Cosistent Hashing Algorithm
+ * Zero Config
+ * Tree Shaking - Removing Unwanted Code
+ *
+ * Transitive Dependencies
+ */
+
+
+ // Default Import
+import Header from "./components/Header";
+
+// Named Import
+ import { Title } from "./components/Header";
+
+ 
+// Behind the Scenes Babel does this
+// const heading = React.createElement("h1", { id: "title", key: "h1" },
+//     "Namaste React"
+//   );
+
+// functional Component basically it is  a simple javascript function
+
+// JSX =>React.createElement => Object =>HTML(DOM)
+// React Element
+// const heading2 = (
+//   <h1 id="title2" className="heading">
+//     Namaste React
+//   </h1>
+// );
+// React Component
+//  Functional Components - We use  most of the time
+// Name of the Component starts with Capital letter - It's not mandatory
+
+
+
+
+/*
+       Header
+     - Title(Logo)
+     - Nav Items(Right Side)
+     - Cart
+
+     Body
+     - SearchBar
+     - RestaurantList
+     - RestaurantCard (many Cards)
+        - Images
+        - Name
+        - Rating
+        - Cuisines
+
+     Footer
+     - Links
+     - Copyright 
+     */
+
+
+// const Momos = {
+//   image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_628,h_704/TopPicks/VDPFMVMoPe",  
+//   name:"Wow! Momo",
+//   cuisines:["Tibetan", "Healthy Food"],
+//   rating:"4.2"
+// }
+
+
+
+// console.log(heading)
+// React.createElement() => Object => HTML(DOM)
+// <h1 id="title">Heading 1</h1>
+
+
+  setMenuItems(
+    json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+      ?.map((x) => x.card.card)
+      .filter(
+        (x) =>
+          x.card?.["@type"] ==
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      )
+  );
