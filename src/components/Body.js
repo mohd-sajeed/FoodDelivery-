@@ -13,7 +13,7 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
   const { user, setUser } = useContext(UserContext);
-  console.log("body rendered", allRestaurants);
+  // console.log("body rendered", allRestaurants);
 
   const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
   useEffect(() => {
@@ -45,7 +45,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="p-2 bg-purple-400 m-2 ">
+      <div className=" p-2 bg-purple-400 m-2 ">
         <input
           type="text"
           placeholder="search"
@@ -85,7 +85,7 @@ const Body = () => {
         ></input> */}
       </div>
 
-      <div className="flex flex-wrap bg-purple-900">
+      <div className=" w-[983px] h-[860px ] mx-auto  flex flex-wrap items-center justify-center  bg-gray-50 ">
         {filteredRestaurants.length === 0 ? (
           <h1>No Restaurant Found</h1>
         ) : (
@@ -97,9 +97,9 @@ const Body = () => {
               >
                 {/* If the restaurant is promoted then add a label to it */}
                 {restaurant.info.promoted ? (
-                  <RestaurantCardPromoted {...restaurant?.info} />
+                  <RestaurantCardPromoted resData={restaurant?.info} />
                 ) : (
-                  <RestaurantCard {...restaurant?.info} />
+                  <RestaurantCard resData={restaurant?.info} />
                 )}
               </Link>
             );
