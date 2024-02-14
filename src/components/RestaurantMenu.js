@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { json, useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import RestaurantCategory from "./RestaurantCategory";
@@ -10,7 +10,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const params = useParams();
   const { resId } = params;
-  const restaurant = useRestaurant(resId);
+  const resInfo = useRestaurantMenu(resId);
   const dispatch = useDispatch();
   const [showIndex, setShowIndex] = useState(null);
 
@@ -18,28 +18,24 @@ const RestaurantMenu = () => {
   //   dispatch(addItem("Grapes"));
   // };
 
-  const addFoodItem = (item) => {
-    dispatch(addItem(item));
-  };
+  // const addFoodItem = (item) => {
+  //   dispatch(addItem(item));
+  // };
 
-  if (restaurant === null) return <Shimmer />;
+  if (resInfo === null) return <Shimmer />;
 
   const {
     name,
-    cloudinaryImageId,
-    areaName,
-    city,
-    avgRating,
     costForTwoMessage,
     cuisines,
-  } = restaurant?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[0]?.card?.card?.info;
 
-  const { itemCards } =
-    restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      ?.card;
+  // const { itemCards } =
+  //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      // ?.card;
 
   const categories =
-    restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

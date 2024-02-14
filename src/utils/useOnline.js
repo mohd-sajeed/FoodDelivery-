@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 
-const useOnline =()=>{
-    const [isOnline, setIsOnline] = useState(true)
+const useOnlineStatus =()=>{
+    const [onlineStatus, setOnlineStatus] = useState(true)
 
     useEffect(() => {
 
       const handleOnline=() => {
-        setIsOnline(true);
+        setOnlineStatus(true);
       }
       const handleOffline= () => {
-        setIsOnline(false);
+        setOnlineStatus(false);
       }
 
       window.addEventListener("online", handleOnline);
@@ -20,7 +20,7 @@ const useOnline =()=>{
       })
      
     }, []);
-    return isOnline // returns a boolean
+    return onlineStatus // returns a boolean
 }
 
-export default useOnline
+export default useOnlineStatus

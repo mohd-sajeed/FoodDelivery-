@@ -1,7 +1,6 @@
-
-import Profile from "../../ProfileClass"
-import FunctionalComponent from "./Profile"
-import { Component } from "react"
+import Profile from "../../ProfileClass";
+import FunctionalComponent from "./Profile";
+import { Component } from "react";
 import UserContext from "../utils/userContext";
 
 // const About = ()=> {
@@ -20,13 +19,10 @@ class About extends Component {
     super(props);
     // console.log("parent-Constructor");
   }
-   componentDidMount() {
+  componentDidMount() {
     // Best place to Call API
     // console.log("Parent-ComponentDidMount");
-  
   }
-
-  
 
   render() {
     // console.log("Parent-render()");
@@ -34,7 +30,11 @@ class About extends Component {
       <div>
         <h1>About Us Page</h1>
         <UserContext.Consumer>
-          {({user})=><h3 className="p-10 font-bold">{user.name}-{user.email}</h3>}
+          {({ user }) => (
+            <h3 className="p-10 font-bold">
+              {user.name}-{user.email}
+            </h3>
+          )}
         </UserContext.Consumer>
         <p>This is Namaste React Live Course Chapter-07 Finding the Path</p>
         <Profile name={"Wajid"} firstName="Mohammed" />
@@ -42,4 +42,4 @@ class About extends Component {
     );
   }
 }
-export default About
+export default About;

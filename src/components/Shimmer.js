@@ -1,7 +1,8 @@
+import React from "react";
 const Shimmer = () => {
   return (
-    <div className="restaurant-list">
-      {Array(10)
+    <div className="flex flex-wrap">
+      {Array(9)
         .fill("")
         .map((e, index) => (
            <div key={index} className="shimmer-effect"></div>
@@ -11,3 +12,4 @@ const Shimmer = () => {
 };
 
 export default Shimmer;
+

@@ -26,15 +26,23 @@ const AppLayout = () => {
   })
 
   return (  
+    <div className=" flex flex-col min-h-screen">
+   
 <Provider store={appstore}>
     <UserContext.Provider value={{user:user,setUser:setUser}}>
       <Header />    
+      <div className="flex-grow container mx-auto p-4">
       <Outlet />
+
+      </div>
       <Footer />
     </UserContext.Provider>
     </Provider>
+    </div>
   );
 };
+
+
 
 const appRouter = createBrowserRouter([
   {
