@@ -1,11 +1,10 @@
-import { useState, useEffect, useContext } from "react";
-// import { restaurantList } from "../../constants";
+import { useState, useEffect } from "react";
 import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useOnline from "../utils/useOnline";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // import filterData from "../utils/helper";
-import { SWIGGY_API_URL } from "../constants";
+import { SWIGGY_API_URL } from "../utils/constants";
 
 const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -31,11 +30,11 @@ const Body = () => {
     );
   }
 
-  const onlineStatus = useOnline();
+  const onlineStatus = useOnlineStatus();
 
   if (!onlineStatus) {
     return (
-      <h1 className="text-center">Please,Check Your Internet Connection!!</h1>
+      <h1 className="text-center mt-24">Looks like you're offline! Please,Check Your Internet Connection!!</h1>
     );
   }
   // not render component early return
@@ -46,7 +45,7 @@ const Body = () => {
   ) : (
     <>
       <div className="body">
-        <div className="flex items-center">
+        <div className="flex items-center w-[983px]  mx-auto ">
           <div className="p-4 m-4">
             <input
               type="text"
@@ -59,56 +58,58 @@ const Body = () => {
             />
 
             <button
-              className=" rounded-md bg-gray-200 text-gray-600 p-2 m-2"
+              className=" rounded-md bg-gray-700 text-white p-2 m-2"
               onClick={() => {
-                // const data = filterData(searchText, listOfRestaurants);
-                // setFilteredRestaurants(data);
-                const filteredRestaurants=listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+               // * Filter the restaurant cards and update the UI
+              // * searchText
+                const filteredRestaurants = listOfRestaurants.filter((res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
 
-                setFilteredRestaurants(filteredRestaurants)
+                setFilteredRestaurants(filteredRestaurants);
               }}
             >
               Search
             </button>
           </div>
 
-            <div className="p-4 m-4">
-              <button
-                className="px-4 py-2 rounded-md bg-gray-200"
-                onClick={() => {
-                 const filteredList = listOfRestaurants.filter(
-                    (res) => res.info.avgRating > 4.2
-                  );
-                  setListOfRestaurants(filteredList)
-                  console.log(filteredList);
-                }}
-              >
-                Top Rated Restaurants
-              </button>
-            </div>
+          <div className="p-4 m-4">
+            <button
+              className="px-4 py-2 rounded-md bg-gray-200"
+              onClick={() => {
+                const filteredList = listOfRestaurants.filter(
+                  (res) => parseFloat(res.info.avgRating) > 4.2
+                );
+                setFilteredRestaurants(filteredList);
+                console.log(filteredList);
+              }}
+            >
+              Top Rated Restaurants
+            </button>
+          </div>
         </div>
 
-      <div className=" w-[983px]  mx-auto  flex flex-wrap items-center justify-center  bg-gray-50 ">
-        {filteredRestaurants.length === 0 ? (
-          <h1 className="font-bold">No Restaurant Found</h1>
-        ) : (
-          filteredRestaurants?.map((restaurant) => {
-            return (
-              <Link
-                to={"/restaurants/" + restaurant?.info.id}
-                key={restaurant?.info.id}
-              >
-                {/* If the restaurant is promoted then add a label to it */}
-                {restaurant.info.promoted ? (
-                  <RestaurantCardPromoted resData={restaurant?.info} />
-                ) : (
-                  <RestaurantCard resData={restaurant?.info} />
-                )}
-              </Link>
-            );
-          })
-        )}
-      </div>
+        <div className=" w-[983px]  mx-auto  flex flex-wrap items-center justify-center  bg-gray-50 ">
+          {filteredRestaurants.length === 0 ? (
+            <h1 className="font-bold">No Restaurant Found</h1>
+          ) : (
+            filteredRestaurants?.map((restaurant) => {
+              return (
+                <Link
+                  to={"/restaurants/" + restaurant?.info.id}
+                  key={restaurant?.info.id}
+                >
+                  {/* If the restaurant is promoted then add a label to it */}
+                  {restaurant.info.promoted ? (
+                    <RestaurantCardPromoted resData={restaurant?.info} />
+                  ) : (
+                    <RestaurantCard resData={restaurant?.info} />
+                  )}
+                </Link>
+              );
+            })
+          )}
+        </div>
       </div>
     </>
   );

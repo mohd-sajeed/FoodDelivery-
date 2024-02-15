@@ -1,5 +1,4 @@
-import Profile from "../../ProfileClass";
-import FunctionalComponent from "./Profile";
+import UserClass from "../components/UserClass";
 import { Component } from "react";
 import UserContext from "../utils/userContext";
 
@@ -28,16 +27,17 @@ class About extends Component {
     // console.log("Parent-render()");
     return (
       <div>
-        <h1>About Us Page</h1>
+        <h1 className="font-bold text-xl">About Us Page</h1>
         <UserContext.Consumer>
           {({ user }) => (
-            <h3 className="p-10 font-bold">
+            <h1 >
               {user.name}-{user.email}
-            </h3>
+            </h1>
           )}
         </UserContext.Consumer>
-        <p>This is Namaste React Live Course Chapter-07 Finding the Path</p>
-        <Profile name={"Wajid"} firstName="Mohammed" />
+        <p>This is About Page</p>
+        <UserClass />
+        
       </div>
     );
   }

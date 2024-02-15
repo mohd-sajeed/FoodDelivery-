@@ -4,6 +4,9 @@ module.exports = {
     "./src/**/*.{html,js}"],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans':['ProximaNova','Helvetica Neue','Arial','sans-serif']
+    }
   },
   plugins: [],
 }

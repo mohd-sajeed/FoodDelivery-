@@ -1,38 +1,23 @@
-import { useEffect, useState } from "react";
-import { json, useParams } from "react-router-dom";
-import { IMG_CDN_URL } from "../constants";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { addItem } from "../utils/cartSlice";
-import { useDispatch } from "react-redux";
 import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const params = useParams();
   const { resId } = params;
   const resInfo = useRestaurantMenu(resId);
-  const dispatch = useDispatch();
   const [showIndex, setShowIndex] = useState(null);
-
-  // const handleAddItem = () => {
-  //   dispatch(addItem("Grapes"));
-  // };
-
-  // const addFoodItem = (item) => {
-  //   dispatch(addItem(item));
-  // };
 
   if (resInfo === null) return <Shimmer />;
 
-  const {
-    name,
-    costForTwoMessage,
-    cuisines,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  const { name, costForTwoMessage, cuisines } =
+    resInfo?.cards[0]?.card?.card?.info;
 
   // const { itemCards } =
   //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-      // ?.card;
+  // ?.card;
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -43,45 +28,24 @@ const RestaurantMenu = () => {
 
   // console.log(categories);
   return (
-    // <div className="flex">
-    //   {/* <div>
-    //     <h1>Restaurant id: {resId}</h1>
-    //     <h2>{name}</h2>
-    //     <img src={IMG_CDN_URL + cloudinaryImageId} alt="" />
-    //     <h2>{areaName}</h2>
-    //     <h2>{city}</h2>
-    //     <h2>{avgRating}</h2>
-    //     <h2>{costForTwoMessage}</h2>
-    //   </div> */}
-
-    //   {/* <div className="text-center ">
-    //     <h1>Menu</h1>
-    //     <ul>
-    //       {itemCards.map((item) => (
-    //         <li key={item.card.info.id}>
-    //           {item.card.info.name}-{"Rs."}
-    //           {item.card.info.price / 100 ||
-    //             item.card.info.defaultPrice / 100}{" "}
-    //           <button
-    //             className="p-1 m-2 bg-green-200"
-    //             onClick={() => addFoodItem(item)}
-    //           >
-    //             Add
-    //           </button>{" "}
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </div> */}
-    // </div>
-
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
       <p className="font-bold text-lg">
         {cuisines.join(",")} - {costForTwoMessage}
       </p>
 
+      <div className="text-left">
+        <Link
+          to="/"
+          className="px-4 py-2 ml-40 font-bold duration-[0.3s] bg-gray-700 rounded-md  text-white"
+        >
+          &larr; Back
+        </Link>
+      </div>
+
       {/* Categories Accordion */}
       {categories.map((category, index) => (
+        // Controlled Component
         <RestaurantCategory
           key={category.card.card.title}
           data={category?.card?.card}

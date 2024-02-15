@@ -6,4 +6,3 @@ export const IMG_CDN_URL =
   export const FETCH_MENU_URL =
     "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.3050874&lng=78.4743396&restaurantId=";
 
-    // "https://api.allorigins.win/raw?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D17.3050874%26lng%3D78.4743396%26restaurantId%3D" + resId

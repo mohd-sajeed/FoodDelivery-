@@ -14,13 +14,15 @@ const useOnlineStatus =()=>{
 
       window.addEventListener("online", handleOnline);
       window.addEventListener("offline",handleOffline);
+
+      // CleanUp fn
       return (()=>{
         window.removeEventListener("online",handleOnline)
         window.removeEventListener("offline",handleOffline)
       })
      
     }, []);
-    return onlineStatus // returns a boolean
+    return onlineStatus // returns a boolean value
 }
 
 export default useOnlineStatus

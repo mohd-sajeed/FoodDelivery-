@@ -4,8 +4,9 @@ import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+
   const dispatch = useDispatch();
-  console.log(cartItems);
+  // console.log(cartItems);
   const handleClearCart = () => {
     dispatch(clearCart());
   };
@@ -14,16 +15,18 @@ const Cart = () => {
       <h1 className="font-bold text-3xl ">Cart Items-{cartItems.length}</h1>
 
       <div className="w-6/12 m-auto">
-        <button
-          className="p-2 m-5  bg-black text-white rounded-lg text-center"
-          onClick={() => handleClearCart()}
-        >
-          Clear Cart
-        </button>
         {cartItems.length === 0 && (
           <h1>Cart is empty.Add Items to the cart!</h1>
         )}
         <ItemList items={cartItems} />
+        {cartItems.length > 0 && (
+          <button
+            className="p-2 m-5  bg-black text-white rounded-lg text-center"
+            onClick={() => handleClearCart()}
+          >
+            Clear Cart
+          </button>
+        )}
       </div>
     </div>
   );

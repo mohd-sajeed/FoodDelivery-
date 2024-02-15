@@ -1,6 +1,5 @@
 import React from "react";
-import { IMG_CDN_URL } from "../constants";
-import RestaurantMenu from "./RestaurantMenu";
+import { IMG_CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
@@ -36,13 +35,13 @@ const ItemList = ({ items }) => {
 
             <div className="w-3/12 p-2">
           <div className="absolute">
-              <button className="p-1 bg-black text-white shadow-lg rounded-lg my-16 mx-7 text-sm w-20" onClick={()=>handleAddItem(item)} >
+              <button className="p-1 bg-black text-white shadow-lg rounded-lg my-16 mx-7 text-sm w-20" onClick={()=>handleAddItem(item)} > 
                 Add +
               </button>
             </div>
             <img
-              src={IMG_CDN_URL + item.card.info.imageId}
-              className=" p-2"
+              src={IMG_CDN_URL + item.card.info.imageId}alt={item.card.info.name}
+              className="p-2"
             />
           </div>
         </div>
