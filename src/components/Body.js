@@ -46,11 +46,13 @@ const Body = () => {
     <>
       <div className="body">
         <div className="flex items-center w-[983px]  mx-auto ">
-          <div className="p-4 m-4">
+          <div className="p-4 m-4 search">
+          <form onSubmit={(e)=>e.preventDefault()}>
             <input
-              type="text"
+               data-testid="searchInput"
               placeholder="search"
-              className=" border border-black  rounded-md px-4 py-2"
+              type="text"
+              className=" border border-black  rounded-md px-4 py-2 bg-gray-100 "
               value={searchText}
               onChange={(e) => {
                 setSearchText(e.target.value);
@@ -58,7 +60,7 @@ const Body = () => {
             />
 
             <button
-              className=" rounded-md bg-gray-700 text-white p-2 m-2"
+              className=" rounded-md bg-gray-700 text-white p-2 ml-4"
               onClick={() => {
                // * Filter the restaurant cards and update the UI
               // * searchText
@@ -71,6 +73,7 @@ const Body = () => {
             >
               Search
             </button>
+            </form>
           </div>
 
           <div className="p-4 m-4">

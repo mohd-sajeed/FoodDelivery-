@@ -29,7 +29,7 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <ul className="flex py-10">
-          <li className="px-4">Online Status:{onlineStatus ? "✅" : "🔴"}</li>
+          <li data-testid="online-status" className="px-4">Online Status:{onlineStatus ? "✅" : "🔴"}</li>
 
           <li className="px-4 hover:text-orange-500 ">
             <Link to="/">Home</Link>

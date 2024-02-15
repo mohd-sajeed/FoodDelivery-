@@ -66,18 +66,18 @@ it("Logo should load on rendering header", ()=>{
     //   console.log(logo)
 })
 
-// it("Online status should be green on rendering header", ()=>{
+it("Online status should be green on rendering header", ()=>{
 
-//     const header = render(
-//           <BrowserRouter>
-//             <Provider store={appstore}>
-//               <Header />
-//             </Provider>
-//           </BrowserRouter>
-//         );  
-//       // Check online status
-//      const onlineStatus = header.getByTestId("online-status")
-//      expect(onlineStatus.innerHTML).toBe("✅")
+    const header = render(
+          <BrowserRouter>
+            <Provider store={appstore}>
+              <Header />
+            </Provider>
+          </BrowserRouter>
+        );  
+      // Check online status
+     const onlineStatus = header.getByTestId("online-status")
+     expect(onlineStatus.innerHTML).toBe("Online Status:✅")
 
-//   })
+  })
   

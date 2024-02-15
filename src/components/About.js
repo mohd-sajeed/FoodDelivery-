@@ -29,9 +29,9 @@ class About extends Component {
       <div>
         <h1 className="font-bold text-xl">About Us Page</h1>
         <UserContext.Consumer>
-          {({ user }) => (
+          {({ loggedInUser }) => (
             <h1 >
-              {user.name}-{user.email}
+              {loggedInUser}
             </h1>
           )}
         </UserContext.Consumer>

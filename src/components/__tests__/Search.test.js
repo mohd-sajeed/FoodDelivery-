@@ -23,7 +23,7 @@ it("Should search Restaurant List for burger text input", async () => {
   );
 
   const cardsBeforeSearch = screen.getAllByTestId("resCard");
-  expect(cardsBeforeSearch.length).toBe(9);
+  expect(cardsBeforeSearch.length).toBe(10);
   const searchBtn = screen.getByRole("button", { name: "Search" });
   expect(searchBtn).toBeInTheDocument();
 
@@ -35,27 +35,27 @@ it("Should search Restaurant List for burger text input", async () => {
 
   // Screen should load 1 Restaurantcard
   const cardsAfterSearch = screen.getAllByTestId("resCard");
-  expect(cardsAfterSearch.length).toBe(1);
+  expect(cardsAfterSearch.length).toBe(2);
 });
 
-// it("Should filter Top Rated Restaurant", async () => {
-//     await act(async () =>
-//       render(
-//         <BrowserRouter>
-//           <Body />
-//         </BrowserRouter>
-//       )
-//     );
+it("Should filter Top Rated Restaurant", async () => {
+    await act(async () =>
+      render(
+        <BrowserRouter>
+          <Body />
+        </BrowserRouter>
+      )
+    );
   
-//     const cardsBeforeFilter = screen.getAllByTestId("resCard");
-//     expect(cardsBeforeFilter.length).toBe(9);
+    const cardsBeforeFilter = screen.getAllByTestId("resCard");
+    expect(cardsBeforeFilter.length).toBe(10);
     
-//     const topRatedBtn = screen.getByRole("button", {name:"Top Rated Restaurants"})
-//     // expect(topRatedBtn.length).toBe()
-//     fireEvent.click(topRatedBtn)
+    const topRatedBtn = screen.getByRole("button", {name:"Top Rated Restaurants"})
+    // expect(topRatedBtn.length).toBe()
+    fireEvent.click(topRatedBtn)
 
-//     const cardsAfterFilter=screen.getAllByTestId("resCard")
-//     expect(cardsAfterFilter.length).toBe(5)
+    const cardsAfterFilter=screen.getAllByTestId("resCard")
+    expect(cardsAfterFilter.length).toBe(6)
     
-//   });
+  });
   

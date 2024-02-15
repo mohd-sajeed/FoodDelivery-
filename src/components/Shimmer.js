@@ -5,24 +5,12 @@ const Shimmer = () => {
     //   {Array(9)
     //     .fill("")
     //     .map((e, index) => (
-    //        <div key={index} className="shimmer-effect"></div>
+    //        <div key={index} className="shimmer-effect">
+
+    //        </div>
     //   ))}
-    // </div>
-    //   <div className="w-[245px] h-[302px]">
-    //     <style>
-    //       {`
-    //         @keyframes shimmer {
-    //           0% {
-    //             background-position: -200%;
-    //           }
-    //           100% {
-    //             background-position: 200%;
-    //           }
-    //         }
-    //       `}
-    //     </style>
-    // <div className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-spin rounded-md"></div>
-    //   </div>
+      
+    
     <div role="status" className="flex mt-[250px] justify-center">
       <svg
         aria-hidden="true"

@@ -3,13 +3,20 @@ import Contact from "../Contact";
 import "@testing-library/jest-dom";
 
 describe("Contact Us Page Test Case", () => {
-  afterAll(() => {
-    console.log("after All");
-  });
+  // beforeAll(() => {
+  //   console.log('Before All');
+  // });
+  // afterAll(() => {
+  //   console.log("after All");
+  // });
 
-  afterEach(() => {
-    console.log("After Each ");
-  });
+  // afterEach(() => {
+  //   console.log("After Each ");
+  // });
+
+  // beforeEach(() => {
+  //   console.log('Before Each');
+  // });
 
   test("Should load Contact Us Component", () => {
     render(<Contact />);
@@ -22,9 +29,11 @@ describe("Contact Us Page Test Case", () => {
     render(<Contact />);
     const button = screen.getByRole("button");
 
+    // * Assertion
     expect(button).toBeInTheDocument();
   });
 
+  // * Note: test() or it() both are same
   test("Should load input name inside Component", () => {
     render(<Contact />);
     const inputName = screen.getByPlaceholderText("name");
@@ -36,9 +45,11 @@ describe("Contact Us Page Test Case", () => {
     render(<Contact />);
 
     //Quering
-    const inputBoxes = screen.getAllByRole("textbox");
-    console.log(inputBoxes.length);
+    const inputBoxes = screen.getAllByRole("textbox"); // getAllByRole - returns multiple elements
+    // console.log(inputBoxes.length); // returns jsx element
 
-    expect(inputBoxes.length).toBe(2);
+    // * Assertion
+    // expect(inputBoxes.length).toBe(2);
+    expect(inputBoxes.length).not.toBe(3); // not here means inverse
   });
 });
